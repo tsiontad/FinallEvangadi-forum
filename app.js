@@ -6,19 +6,21 @@ app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 
 
-app.use(
-  cors({
-    origin: "http://localhost:5173", 
-    credentials: true, 
-  })
-);
-
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173", 
+//     credentials: true, 
+//   })
+// );
+app.use(cors());
 // database connection
 const dbconnection = require("./Database/databaseconfig");
 
 // user routes middleware file
 const userRoutes = require("./routes/userroutes");
-
+app.get("/", (req, res) => {
+  res.send("working.....")
+})
 // user routes middleware
 app.use("/api/user", userRoutes);
 
